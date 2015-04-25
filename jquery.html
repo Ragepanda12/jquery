@@ -10,7 +10,23 @@
 		$(".show").click(function(){
 			$("p").show();
 		})
+		//slider of box a
+		$("a").click(function() {
+        	$(this).next().slideToggle(); 
+    	});
+    	//required to make things start collapsed for sliders
+    	 $("a").ready(function(){ 
+			$("a").next('div').hide(); 
+		});
+    	 $("h2").hover(function(){
+    	 	$("b").show();
+    	 },
+    	 function(){
+    	 	$("b").hide();
+    	 });
+    	 $("b").hide();
 	});
+
 	</script>
 </head>
 <style>
@@ -19,15 +35,22 @@
 		font-size: 15px;
 		color: blue;
 	}
+	h2{
+		font-family: "Calibri";
+		color: red;
+	}
 </style>
 <body>
-	<h2>This is a heading</h2>
+	 <a>Box 1 - Click to expand content</a>
+	 <div id="box" class="clearfix">
+		<h2>This is a heading</h2>
+		<b>This is hidden until you mouseover the heading.</b>
+		<p>This is a paragraph.</p>
+		<p>This is another paragraph.</p>
 
-	<p>This is a paragraph.</p>
-	<p>This is another paragraph.</p>
-
-	<button class = "hide">Click me to hide</button>
-	<br>
-	<button class = "show">Click me to show</button>
+		<button class = "hide">Click me to hide</button>
+		<br>
+		<button class = "show">Click me to show</button>
+	</div>
 </body>
 </html>
