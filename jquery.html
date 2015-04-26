@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>
 	$(document).ready(function(){
-		$(".hide").click(function(){
+		$("#hide").click(function(){
 			$("p").hide();
 		});
-		$(".show").click(function(){
+		$("#show").click(function(){
 			$("p").show();
 		})
 		//slider of box a
@@ -25,6 +26,12 @@
     	 	$("b").hide();
     	 });
     	 $("b").hide();
+    	 $("input").focus(function(){
+    	 	$(this).css("background-color", "#cccccc")
+    	 });
+    	 $("input").blur(function(){
+    	 	$(this).css("background-color", "#ffffff")
+    	 });
 	});
 
 	</script>
@@ -41,16 +48,20 @@
 	}
 </style>
 <body>
-	 <a>Box 1 - Click to expand content</a>
+	 <a>Clickme!</a>
 	 <div id="box" class="clearfix">
 		<h2>This is a heading</h2>
 		<b>This is hidden until you mouseover the heading.</b>
 		<p>This is a paragraph.</p>
 		<p>This is another paragraph.</p>
 
-		<button class = "hide">Click me to hide</button>
+		<button id = "hide" class = "btn btn-lg btn-success">Click me to hide</button>
 		<br>
-		<button class = "show">Click me to show</button>
+		<button id = "show" class = "btn btn-lg btn-danger">Click me to show</button>
+	</div>
+	<div id="someInputs">
+		Username: <input type="text" name="Username"><br>
+		Password:  <input type="password" name="Password"><br>
 	</div>
 </body>
 </html>
