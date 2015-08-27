@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 <script>
 	function init() {
@@ -22,11 +23,20 @@
 	}
 	$(init);
 </script>
+	<script>
+  		$(function() {
+    		$( "#draggable" ).draggable({ snap: "td"});
+  		});
+  	</script>
 <style>
+	#draggable { 
+		width: 150px; 
+		height: 150px; 
+		padding: 0.5em; 
+	}
 	p{
 		font-family: "Arial";
 		font-size: 15px;
-		color: blue;
 	}
 	h2{
 		font-family: "Calibri";
@@ -171,5 +181,14 @@
 
 		</table>
 	</div>
+	<div id="draggable" class="ui-widget-content">
+		<p>
+			Drag me !!!<br>
+			Getting bigger<br>
+			Testtest<br>
+			Dropjangles<br>
+			Foobar<br>
+		</p>
+    </div>
 </body>
 </html>
