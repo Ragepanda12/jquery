@@ -22,25 +22,41 @@
     }
     $(init);
     </script>
-        <script>
-            $(function() {
-                $( ".draggable" ).draggable({ snap: "td"});
-            });
+    <script>
+        $("td").droppable({ accept: ".draggable",
+            drop: function(event, ui){
+                var dropped = ui.draggable;
+                var droppedOn = $(this);
+                $(dropped).detach().css({top: 0, left: 0}).appendTo(droppedOn);
+            },
+            over: function(event, elem){
+                $(this).addClass("over");
+            },
+            out: function(event, elem){
+                $(this).removeClass("over");
+            }
+        });
+        $("td").sortable();
     </script>
     <script>
         $(function(){
             $('#addDiv').on('click',function(){
                 var r= $('<div class="draggable jumbotron"><p>Dummy<br>Data<br></p></div>');
                 $("body").append(r);
-                $( ".draggable" ).draggable({ snap: "td"});
+                $( ".draggable" ).draggable({ snap: "td", cursor: "crosshair"});
             });
         });
     </script>
     <style>
         .draggable { 
-            width: 3%; 
-            height: 100%; 
             padding: 0.5em; 
+            height:2%;
+            width:5%;
+            background-color: red;
+            //border: solid 2px gray;
+        }
+        .over {
+            border: solid 5px purple;
         }
         #userOne{
             background-color: red;
@@ -210,6 +226,5 @@
 		</table>
 	</div>
 	<button id="addDiv">Insert a new Draggable</button>
-    <div class="draggable jumbotron"><p>Dummy<br>Data<br></p></div>
 </body>
 </html>
