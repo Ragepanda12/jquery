@@ -4,58 +4,86 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script>
+    function init() {
+       var body = $("#tableTest tbody");
+       body.children().each(function (row) { // iterate over <tr>s
+          $(this).children().each(function (col) { // iterate over <td>s
+             $(this).data('row', row);
+             $(this).data('col', col);
+          });
+       });
+
+       body.find('td').click(function () {
+          var row = $(this).data('row');
+          var col = $(this).data('col');
+          alert("You clicked on row " + row + ", col " + col);
+       });
+    }
+    $(init);
+    </script>
+        <script>
+            $(function() {
+                $( ".draggable" ).draggable({ snap: "td"});
+            });
+    </script>
+    <script>
+        $(function(){
+            $('#addDiv').on('click',function(){
+                var r= $('<div class="draggable jumbotron"><p>Dummy<br>Data<br></p></div>');
+                $("body").append(r);
+                $( ".draggable" ).draggable({ snap: "td"});
+            });
+        });
+    </script>
+    <style>
+        .draggable { 
+            width: 3%; 
+            height: 100%; 
+            padding: 0.5em; 
+        }
+        #userOne{
+            background-color: red;
+        }
+        p{
+            font-family: "Arial";
+            font-size: 15px;
+        }
+        h2{
+            font-family: "Calibri";
+            color: red;
+        }
+        table{
+            table-layout: fixed;
+            height: 100%;
+        }
+        td{
+            border: 1px solid;
+            height: 100%;
+        }
+    </style>
 </head>
-<script>
-	function init() {
-	   var body = $("#tableTest tbody");
-	   body.children().each(function (row) { // iterate over <tr>s
-	      $(this).children().each(function (col) { // iterate over <td>s
-	         $(this).data('row', row);
-	         $(this).data('col', col);
-	      });
-	   });
-
-	   body.find('td').click(function () {
-	      var row = $(this).data('row');
-	      var col = $(this).data('col');
-	      alert("You clicked on row " + row + ", col " + col);
-	   });
-	}
-	$(init);
-</script>
-	<script>
-  		$(function() {
-    		$( "#draggable" ).draggable({ snap: "td"});
-  		});
-  	</script>
-<style>
-	#draggable { 
-		width: 150px; 
-		height: 150px; 
-		padding: 0.5em; 
-	}
-	p{
-		font-family: "Arial";
-		font-size: 15px;
-	}
-	h2{
-		font-family: "Calibri";
-		color: red;
-	}
-
-</style>
 <body>
 	<div class="jumbotron">
-		<table class="table" style="width:80%" id="tableTest" align="center">
+		<table class="table" style="width:60% " id="tableTest" align="center" border="1">
+            <tr id="Days">
+                <td></td>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+                <td>Thursday</td>
+                <td>Friday</td>
+                <td>Saturday</td>
+                <td>Sunday</td>
     		<tr id="9:00 am">
     			<td>9:00 am</td>
-    			<td>a</td>
-    			<td>b</td> 
-    			<td>c</td>
-    			<td>d</td>
-    			<td>e</td> 
-    			<td>f</td>
-    			<td>g</td>
+    			<td></td>
+    			<td></td> 
+    			<td></td>
+    			<td></td>
+    			<td></td> 
+    			<td></td>
+    			<td></td>
     		</tr>
     		<tr id="10:00 am">
     			<td>10:00 am</td>
@@ -181,14 +209,7 @@
 
 		</table>
 	</div>
-	<div id="draggable" class="ui-widget-content">
-		<p>
-			Drag me !!!<br>
-			Getting bigger<br>
-			Testtest<br>
-			Dropjangles<br>
-			Foobar<br>
-		</p>
-    </div>
+	<button id="addDiv">Insert a new Draggable</button>
+    <div class="draggable jumbotron"><p>Dummy<br>Data<br></p></div>
 </body>
 </html>
